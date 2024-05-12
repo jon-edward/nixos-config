@@ -4,7 +4,6 @@
     ./firefox.nix
     ./git.nix
     ./python.nix
-    ./steam.nix
     ./vscode.nix
   ];
 }
