@@ -55,6 +55,8 @@
     # Opinionated: make flake registry and nix path match flake inputs
     registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;
     nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
+
+    package = pkgs.nixVersions.nix_2_19;
   };
 
   # Bootloader.
@@ -109,16 +111,42 @@
     pulse.enable = true;
   };
 
-  # Install firefox.
-  programs.firefox.enable = true;
-
-  programs.git.enable = true;
-
   environment.systemPackages = with pkgs; [
     inputs.home-manager.packages.${pkgs.system}.default
     vim
     wget
+    steam
   ];
+
+  # Install steam
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+  };
+
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    autosuggestions.enable = true;
+
+    ohMyZsh = {
+      enable = true;
+      plugins = [ "git" ];
+      theme = "geoffgarside";
+    };
+
+    shellAliases = {
+      rebuild = "sudo nixos-rebuild switch --flake ~/nixos-config#nixos";
+      update = "nix flake update --flake ~/nixos-config";
+    };
+
+    shellInit = ''
+      export ZDOTDIR=$HOME/.config/zsh
+    '';
+  };
+
+  users.defaultUserShell = pkgs.zsh;
 
   networking.hostName = "jont";
 
@@ -127,6 +155,7 @@
       isNormalUser = true;
       openssh.authorizedKeys.keys = [];
       extraGroups = ["wheel" "networkmanager"];
+      useDefaultShell = true;
     };
   };
 
