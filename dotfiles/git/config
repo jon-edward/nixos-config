@@ -1,0 +1,6 @@
+[user]
+    email = townsend.jonathan.e@gmail.com
+    name = jon-edward
+
+[includeIf "gitdir:~/aimless/"]
+    path = ~/.config/.gitconfig_aimless
