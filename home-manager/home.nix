@@ -21,6 +21,11 @@
   home = {
     username = "jont";
     homeDirectory = "/home/jont";
+
+    file.".config" = {
+      source = ./../dotfiles;
+      recursive = true;
+    };
   };
 
   # Enable home-manager
