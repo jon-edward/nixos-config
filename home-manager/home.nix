@@ -7,6 +7,10 @@
   pkgs,
   ...
 }: {
+  imports = [
+    ../packages
+  ];
+
   nixpkgs = {
     config = {
       allowUnfree = true;
@@ -19,9 +23,8 @@
     homeDirectory = "/home/jont";
   };
 
-  # Enable home-manager and git
+  # Enable home-manager
   programs.home-manager.enable = true;
-  programs.git.enable = true;
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";

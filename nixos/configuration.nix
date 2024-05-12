@@ -118,10 +118,6 @@
     inputs.home-manager.packages.${pkgs.system}.default
     vim
     wget
-    nodejs_21
-    python312
-    vscode
-    discord
   ];
 
   networking.hostName = "jont";
