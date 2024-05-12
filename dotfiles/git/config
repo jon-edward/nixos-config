@@ -1,6 +1,5 @@
-[user]
-    email = townsend.jonathan.e@gmail.com
-    name = jon-edward
+[includeIf "gitdir:~/personal/"]
+    path = ~/.config/.gitconfig_jon-edward
 
 [includeIf "gitdir:~/aimless/"]
     path = ~/.config/.gitconfig_aimless
