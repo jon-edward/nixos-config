@@ -22,9 +22,32 @@
     username = "jont";
     homeDirectory = "/home/jont";
 
-    file.".config" = {
-      source = ./../dotfiles;
-      recursive = true;
+    file = {
+      ".config/zsh" = {
+        source = ./../dotfiles/zsh;
+        recursive = true;
+      };
+
+      ".gitconfig" = {
+        text = ''
+          [user]
+          email = townsend.jonathan.e@gmail.com
+          name = jon-edward
+
+          [core]
+          sshCommand = "ssh -i ~/.ssh/gh_jon-edward"
+
+          [url "git@github.com:"]
+          insteadOf = "https://github.com/"
+          
+          [includeIf "gitdir/i:~/aimless-wiki/"]
+          path = ~/.aimless-wiki.gitconfig
+        '';
+      };
+
+      ".aimless-wiki.gitconfig" = {
+        source = ./../dotfiles/.aimless-wiki.gitconfig;
+      };
     };
   };
 

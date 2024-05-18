@@ -1,3 +1,6 @@
 [user]
     email = aimless.wiki@gmail.com
     name = aimless-wiki
+
+[core]
+    sshCommand = "ssh -i ~/.ssh/gh_aimless-wiki"
