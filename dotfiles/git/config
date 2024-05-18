@@ -1,5 +1,0 @@
-[includeIf "gitdir:~/personal/"]
-    path = ~/.config/.gitconfig_jon-edward
-
-[includeIf "gitdir:~/aimless/"]
-    path = ~/.config/.gitconfig_aimless
