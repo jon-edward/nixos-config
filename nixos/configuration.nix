@@ -133,7 +133,7 @@
     ohMyZsh = {
       enable = true;
       plugins = [ "git" ];
-      theme = "geoffgarside";
+      theme = "jonathan";
     };
 
     shellAliases = {
