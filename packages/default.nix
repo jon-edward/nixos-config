@@ -4,8 +4,8 @@
     ./firefox.nix
     ./git.nix
     ./nodejs.nix
-    ./nvidia-docker.nix
     ./python.nix
+    ./rust.nix
     ./vscode.nix
   ];
 }
