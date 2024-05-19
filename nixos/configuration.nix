@@ -154,7 +154,7 @@
     jont = {
       isNormalUser = true;
       openssh.authorizedKeys.keys = [];
-      extraGroups = ["wheel" "networkmanager"];
+      extraGroups = [ "wheel" "networkmanager" "docker" ];
       useDefaultShell = true;
     };
   };

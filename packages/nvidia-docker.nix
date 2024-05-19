@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
     home.packages = with pkgs; [
-        sublime4
+        nvidia-docker
     ];
 }
