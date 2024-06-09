@@ -3,7 +3,7 @@
     ./discord.nix
     ./firefox.nix
     ./git.nix
-    ./nimble.nix
+    ./nim.nix
     ./nodejs.nix
     ./python.nix
     ./rust.nix
