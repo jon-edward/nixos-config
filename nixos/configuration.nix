@@ -88,13 +88,15 @@
   services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
+  services.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
-    layout = "us";
-    xkbVariant = "";
+    xkb = {
+      layout = "us";
+      variant = "";
+    };
   };
 
   # Enable CUPS to print documents.
@@ -116,6 +118,9 @@
     vim
     wget
     steam
+    pciutils
+    neofetch
+    lshw
   ];
 
   # Install steam
@@ -149,6 +154,14 @@
   users.defaultUserShell = pkgs.zsh;
 
   networking.hostName = "jont";
+
+  hardware.nvidia.modesetting.enable = true;
+  services.xserver.videoDrivers = [ "nvidia" ];
+  hardware.nvidia.prime.sync.enable = true;
+  hardware.nvidia.prime = {
+    nvidiaBusId = "PCI:01:00:0";  # Found with lspci | grep VGA
+    intelBusId = "PCI:00:02:0";  # Found with lspci | grep VGA
+  };
 
   users.users = {
     jont = {
