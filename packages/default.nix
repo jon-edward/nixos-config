@@ -7,6 +7,7 @@
     ./nodejs.nix
     ./obs.nix
     ./python.nix
+    ./shotcut.nix
     ./rust.nix
     ./vscode.nix
   ];
