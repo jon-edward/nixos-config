@@ -103,7 +103,6 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -121,6 +120,8 @@
     pciutils
     neofetch
     lshw
+    xorg.libX11
+    ungoogled-chromium
   ];
 
   # Install steam
@@ -148,6 +149,7 @@
 
     shellInit = ''
       export ZDOTDIR=$HOME/.config/zsh
+      alias pycharm=pycharm-community
     '';
   };
 

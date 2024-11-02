@@ -1,13 +1,14 @@
-let
-  unstable = import (fetchTarball "https://releases.nixos.org/nixos/unstable/nixos-22.11pre421761.448a599c499/nixexprs.tar.xz") { };
-in
-{ nixpkgs ? import <nixpkgs> {} }:
+{ pkgs ? import <nixpkgs> { } }:
+pkgs.mkShell rec {
 
-nixpkgs.mkShell {
-  nativeBuildInputs = with nixpkgs; [
-    unstable.python310
-    unstable.python310Packages.poetry
+  buildInputs = with pkgs; [
+    python312
+    poetry
+    zlib
   ];
 
-  LD_LIBRARY_PATH = "${nixpkgs.stdenv.cc.cc.lib}/lib";
+  shellHook = ''
+    export LD_LIBRARY_PATH="${pkgs.lib.makeLibraryPath buildInputs}:$LD_LIBRARY_PATH"
+    export LD_LIBRARY_PATH="${pkgs.stdenv.cc.cc.lib.outPath}/lib:$LD_LIBRARY_PATH"
+  '';
 }
